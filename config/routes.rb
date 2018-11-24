@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'books#index'
+  resources :books
+  resources :authers
+  resources :customers
+  namespace :customers do
+    get 'bookshelf/:id', action: :bookshelf, as: :bookshelf
+    post 'buy'
+  end
+  resources :comments
 end
